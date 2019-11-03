@@ -54,7 +54,13 @@ export const AddressDefinition: TAddress = {
     },
     zipcode: {
         type: String,
-        required: true
+        required: true,
+        set: (value: string) => {
+            return (value || '').replace(/[. ()-/_]/g, '');
+        },
+        get: (value: string) => {
+            return (value || '').replace(/(\d{5})(\d{3})/, '$1-$2'); 
+        }
     },
     user: {
         type: Schema.Types.ObjectId,
