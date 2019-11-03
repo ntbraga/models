@@ -1,5 +1,4 @@
 import { IModel, TModel } from "../lib/model";
-import { Schema, model } from "mongoose";
 
 export interface IUser extends IModel {
 
@@ -14,7 +13,7 @@ export interface IUser extends IModel {
 
 type TUser = TModel<IUser>;
 
-const IUser: TUser = {
+export const UserDefinition: TUser = {
     user: {
         type: String,
         required: true
@@ -43,8 +42,4 @@ const IUser: TUser = {
         type: String,
         required: true
     }
-}
-
-const UserSchema: Schema<IUser> = new Schema<IUser>(IUser, { timestamps: { createdAt: true, updatedAt: true }, versionKey: false });
-
-export default model<IUser>('user', UserSchema);
+};

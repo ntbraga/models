@@ -1,9 +1,9 @@
 {
   "name": "@ntbraga/models",
-  "version": "0.0.6",
+  "version": "0.0.77",
   "description": "",
-  "main": "dist/index.ts",
-  "types": "dist/index.d.ts",
+  "main": "./dist/index.js",
+  "types": "./dist/index.d.ts",
   "scripts": {
     "prepublish": "tsc",
     "test": "echo \"Error: no test specified\" && exit 1"
@@ -19,14 +19,12 @@
   },
   "dependencies": {
     "gulp": "^4.0.2",
-    "gulp-typescript": "^5.0.1",
-    "mongodb": "^3.3.3",
-    "mongoose": "^5.7.7"
+    "gulp-typescript": "^5.0.1"
   },
   "repository": {
     "url": "git://github.com/ntbraga/models.git"
   },
   "publishConfig": {
-    "registry":"https://npm.pkg.github.com/"
+    "registry": "https://npm.pkg.github.com/"
   }
 }

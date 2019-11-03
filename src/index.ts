@@ -1,2 +1,3 @@
-export { IUser as User, default as UserModel } from './models/user.model';
-export { IAddress as Address, default as AddressModel } from './models/address.model';
+export { IUser as User, UserDefinition } from './models/user.model';
+export { IAddress as Address, AddressDefinition } from './models/address.model';
+export { baseModel as baseModelPlugin, DefaultSchemaOptions } from './lib';

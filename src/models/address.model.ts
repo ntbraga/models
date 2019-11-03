@@ -1,5 +1,5 @@
 import { IModel, TModel } from "../lib/model";
-import { Schema, model } from "mongoose";
+import { Schema } from "mongoose";
 
 export interface IAddress extends IModel {
 
@@ -10,12 +10,24 @@ export interface IAddress extends IModel {
     country: string,
     complement: string,
     zipcode: string
+    user: Schema.Types.ObjectId,
+    location: {
+        type: {
+            type: String,
+            enum: ['Point'],
+            required: true
+        },
+        coordinates: {
+            type: [Number],
+            required: true
+        }
+    }
 
 }
 
 type TAddress = TModel<IAddress>;
 
-const IAddress: TAddress = {
+export const AddressDefinition: TAddress = {
 
     street: {
         type: String,
@@ -43,10 +55,11 @@ const IAddress: TAddress = {
     zipcode: {
         type: String,
         required: true
+    },
+    user: {
+        type: Schema.Types.ObjectId,
+        ref: 'User',
+        required: true
     }
 
 }
-
-const UserSchema: Schema<IAddress> = new Schema<IAddress>(IAddress, { timestamps: { createdAt: true, updatedAt: true }, versionKey: false });
-
-export default model<IAddress>('address', UserSchema);

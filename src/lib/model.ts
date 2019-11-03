@@ -1,11 +1,11 @@
-import { Schema, SchemaTypeOpts, SchemaType, SchemaDefinition, Document } from 'mongoose';
+import { Schema, SchemaTypeOpts, SchemaType, SchemaDefinition, Document, Types } from 'mongoose';
 
 export type TModel<T extends IModel> = {
     [P in keyof T]?: SchemaTypeOpts<any> | Schema | SchemaType;
 } & SchemaDefinition;
 
 export interface IModel extends Document {
-    _id: string,
+    _id: Types.ObjectId,
     createdAt: Date,
     updatedAt: Date
 }
