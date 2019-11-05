@@ -64,7 +64,7 @@ export const AddressDefinition: TAddress = {
     },
     user: {
         type: Schema.Types.ObjectId,
-        ref: 'User',
+        ref: 'People',
         required: true
     }
 
