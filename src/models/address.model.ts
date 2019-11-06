@@ -11,7 +11,7 @@ export interface IAddress extends IModel {
     complement: string,
     uf: string,
     zipcode: string
-    people: Schema.Types.ObjectId,
+    people: string | Schema.Types.ObjectId,
     location: {
         type: {
             type: String,
