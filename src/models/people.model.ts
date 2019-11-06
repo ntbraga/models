@@ -14,12 +14,12 @@ type TPeople = TModel<IPeople>;
 export const PeopleDefinition: TPeople = {
     name: {
         type: String,
-        required: true
+        required: [true, 'O nome é obrigatório']
     },
     email: {
         type: String,
-        required: true,
-        unique: true
+        required: [true, 'O E-mail é obrigatório.'],
+        unique: [true, 'Só é permitida uma pessoa com este e-mail.']
     },
     countryCode: {
         type: String,

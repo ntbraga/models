@@ -3,14 +3,15 @@ import { Schema } from "mongoose";
 
 export interface IAddress extends IModel {
 
-    street: string,
+    address: string,
     number: string,
     district: string,
     city: string,
     country: string,
     complement: string,
+    uf: string,
     zipcode: string
-    user: Schema.Types.ObjectId,
+    people: Schema.Types.ObjectId,
     location: {
         type: {
             type: String,
@@ -29,32 +30,37 @@ type TAddress = TModel<IAddress>;
 
 export const AddressDefinition: TAddress = {
 
-    street: {
+    address: {
         type: String,
-        required: true
+        required: [true, 'É necessário preencher a rua']
     },
     number: {
-        type: String,
-        required: true
+        type: String
     },
     district: {
         type: String,
-        required: true
+        required: [true, 'É necessário preencher o bairro']
     },
     city: {
         type: String,
-        required: true
+        required: [true, 'É necessário preencher a cidade']
     },
     country: {
         type: String,
-        required: true
+        required: [true, 'É necessário preencher o país']
     },
     complement: {
         type: String
     },
-    zipcode: {
+    uf: {
         type: String,
         required: true,
+        maxlength: 2,
+        minlength: 2
+    },
+    zipcode: {
+        type: String,
+        required: [true, 'É necessário preencher o cep'],
         set: (value: string) => {
             return (value || '').replace(/[. ()-/_]/g, '');
         },
@@ -62,10 +68,10 @@ export const AddressDefinition: TAddress = {
             return (value || '').replace(/(\d{5})(\d{3})/, '$1-$2'); 
         }
     },
-    user: {
+    people: {
         type: Schema.Types.ObjectId,
         ref: 'People',
-        required: true
+        required: [true, 'O endereço deve pertencer a uma pessoa.']
     }
 
 }
