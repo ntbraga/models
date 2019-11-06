@@ -77,6 +77,10 @@ export const AddressDefinition: TAddress = {
             type: [Number],
             required: true
         }
+    },
+
+    images: {
+        type: [{ type: String, url: String }]
     }
 
 }
