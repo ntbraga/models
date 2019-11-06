@@ -1,4 +1,6 @@
 import { IModel, TModel } from "../lib/model";
+import { Address } from "..";
+import { Schema } from "mongoose";
 
 export interface IPeople extends IModel {
 
@@ -6,10 +8,11 @@ export interface IPeople extends IModel {
     email: string;
     countryCode: string;
     phone: string;
+    addresses: Address[]
 
 }
 
-type TPeople = TModel<IPeople>; 
+type TPeople = TModel<IPeople>;
 
 export const PeopleDefinition: TPeople = {
     name: {
@@ -38,5 +41,6 @@ export const PeopleDefinition: TPeople = {
         get: (value: string) => {
             return (value || '').replace(/[. ()-/_]/g, '').replace(/(\d{2})(\d{4,5})(\d{4})/, '($1) $2-$3');
         }
-    }
+    },
+    addresses: [{ type: Schema.Types.ObjectId, ref: 'Address' }]
 };
