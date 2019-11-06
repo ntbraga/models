@@ -81,7 +81,7 @@ export const AddressDefinition: TAddress = {
     },
 
     images: {
-        type: [{ type: { tpye: String}, url: { type: String } }]
+        type: [{ type: { type: String}, url: { type: String } }]
     }
 
 }
