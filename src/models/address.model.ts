@@ -16,7 +16,7 @@ export interface IAddress extends IModel {
         type: 'POINT',
         coordinates: number[]
     },
-    images: [{ type: string, url: string }]
+    images: { type: string, url: string }[]
 
 }
 
