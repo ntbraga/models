@@ -5,7 +5,7 @@ export type TModel<T extends IModel> = {
 } & SchemaDefinition;
 
 export interface IModel extends Document {
-    _id: Types.ObjectId,
+    _id: Types.ObjectId | string,
     createdAt: Date,
     updatedAt: Date
 }
