@@ -13,15 +13,8 @@ export interface IAddress extends IModel {
     zipcode: string
     people: string | Schema.Types.ObjectId,
     location: {
-        type: {
-            type: String,
-            enum: ['Point'],
-            required: true
-        },
-        coordinates: {
-            type: [Number],
-            required: true
-        }
+        type: 'POINT',
+        coordinates: number[]
     }
 
 }
@@ -72,6 +65,18 @@ export const AddressDefinition: TAddress = {
         type: Schema.Types.ObjectId,
         ref: 'People',
         required: [true, 'O endereço deve pertencer a uma pessoa.']
+    },
+
+    location: {
+        type: {
+            type: String,
+            enum: ['Point'],
+            required: true
+        },
+        coordinates: {
+            type: [Number],
+            required: true
+        }
     }
 
 }
